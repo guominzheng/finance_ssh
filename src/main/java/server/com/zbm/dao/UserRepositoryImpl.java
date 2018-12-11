@@ -19,7 +19,6 @@ public class UserRepositoryImpl implements UserRepository {
         return this.sessionFactory.openSession();
     }
 
-
     @Override
     public User load(Long id) {
 

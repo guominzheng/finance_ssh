@@ -9,7 +9,7 @@
         <module name="finance_pro" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.8">
       <module name="finance_pro" target="1.8" />
     </bytecodeTargetLevel>
   </component>
