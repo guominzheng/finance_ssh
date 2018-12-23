@@ -2,8 +2,8 @@ package server.com.zbm.servie.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import server.com.zbm.dao.UserDao;
-import server.com.zbm.dao.UserRepository;
+import server.com.zbm.dao.user.UserDao;
+import server.com.zbm.entity.PageBean.Page;
 import server.com.zbm.entity.User;
 import server.com.zbm.servie.IUserService;
 
@@ -13,20 +13,23 @@ import java.util.List;
 public class UserServiceImpl implements IUserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserDao userDao;
 
     @Override
     public User load(Long id) {
-        return userRepository.load(id);
+        return userDao.load(id);
     }
 
     @Override
     public User get(Long id) {
-        return userRepository.get(id);
+        return userDao.get(id);
     }
 
     @Override
-    public List<User> findAll() {
-        return userRepository.findAll();
+    public List<User> findAll(User user, int begin, int pageSize) {
+        Page page = new Page();
+        page.setPageno(begin);
+        page.setTotalpage(userDao.getTotalCount(), pageSize);
+        return userDao.findAll(user, page.getStartrow(), page.getPagesize());
     }
 }

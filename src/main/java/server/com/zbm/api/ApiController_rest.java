@@ -28,6 +28,6 @@ public class ApiController_rest {
     public String getUser1(){
         User user =new User();
         user.setAddress("郑州");
-        return JSONArray.toJSONString(userService.findAll());
+        return JSONArray.toJSONString(userService.findAll(user,1,10));
     }
 }
